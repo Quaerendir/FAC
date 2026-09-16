@@ -64,7 +64,7 @@ FAC.bas vs FAC.LST: 20 lines differ
 ```
 python3 fac_extract.py FAC.LST [--check FAC.bas] [--glyphs]   # -> levels.txt meta.json charset.bin
 pip install pytest hypothesis mypy
-python3 -m pytest -q          # 53 tests
+python3 -m pytest -q          # 55 tests
 python3 -m mypy fac/          # strict
 ```
 
