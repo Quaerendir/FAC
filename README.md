@@ -32,6 +32,7 @@ Four variants: free, time limit, step limit, both. Eleven levels.
 | `fac/render.py` | stage 4: GRAPHICS 18/0 rendering, the live charset, POKEY channel 1, the timed sequences |
 | `fac/play.py` | stage 4: the playable game (`fac` / `python -m fac.play`) |
 | `fac/data/` | copies of `levels.txt`, `meta.json`, `charset.bin` shipped inside the package |
+| `tools/line_codes.py` | the magazine's two-letter line codes (Generator Kodów Kontrolnych, TA 2/91) for any listing |
 | `tools/screenshots.py`, `docs/*.png` | screenshots rendered from the extracted data |
 
 ## Why the LST and not the HTML
@@ -43,9 +44,13 @@ in line 50 were dropped, and **the thirteen DATA lines holding the redefined
 character set (1010..1140) are empty**. The same archive ships the listings of
 each issue as an ATR disk image; `FAC.LST` from it is byte-exact and the
 archive notes that every listing was verified with the magazine's two-letter
-line codes ("Generator Kodów Kontrolnych"). The scan of the page (archive.org,
-`tajemnice-atari-1992-02`) agrees with it glyph for glyph where the print is
-legible.
+line codes ("Generator Kodów Kontrolnych", TA 2/91). That check is repeated
+here: `tools/line_codes.py` implements the code (recovered from the
+generator's machine code: `Σ i·byte_i mod 676`, quotient and remainder by 26
+as letters) and `tests/test_extract.py` compares it with the codes printed
+beside the listing, read from the scan (archive.org,
+`tajemnice-atari-1992-02`, p. 18) for the thirteen charset lines and their
+neighbours: all agree.
 
 ```
 python3 fac_extract.py FAC.LST --check FAC.bas
@@ -111,9 +116,9 @@ events = e.tick(Key.LEFT)     # one pass of the main loop; e.screen, e.state
   of Atari BASIC. One pass of the main loop is taken as 100 ms and the sound
   loops as 7–30 ms per iteration (`SPEC.md` §7). Running `FAC.LST` in an
   emulator with the real Atari BASIC ROM would pin these down.
-- The magazine's two-letter line codes are not re-verified here (the
-  algorithm was not found in the archive); the archive's own verification is
-  relied upon.
+- The magazine's line codes were re-verified for the charset lines and a
+  sample of others (`tools/line_codes.py`); the remaining lines rely on the
+  archive's verification and on the scan.
 - The 26 glyphs are known; what the original showed for glyphs 26..63 was
   whatever RAM held at `$98D0`. The levels never use them.
 

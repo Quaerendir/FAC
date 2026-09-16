@@ -7,8 +7,8 @@ the engine through the API in §8.
 Original: J.B. Wiśniewski, 1992, Atari 8-bit, Atari BASIC, published as a
 type-in listing in Tajemnice ATARI 2/92 (`2_92_fac.html`). The reference text
 is `FAC.LST`, the program as LISTed by Atari BASIC, from the archive's disk
-image (`2_92_listingi.zip` → `2_92.atr`); the archive states that its listings
-were verified against the magazine's two-letter line codes. Every rule below is
+image (`2_92_listingi.zip` → `2_92.atr`), verified against the magazine's
+two-letter line codes (`tools/line_codes.py`, algorithm from TA 2/91). Every rule below is
 read from that listing; `L205` means BASIC line 205. Nothing is guessed except
 the *durations* of things (§7), which depend on the speed of the BASIC
 interpreter and are marked **[EST]**.

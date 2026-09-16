@@ -68,3 +68,17 @@ def test_html_listing_differs_only_where_expected():
     numbers = sorted(int(r.split()[1].rstrip(':')) for r in report)
     charset_lines = [1010, 1020, 1030, 1040, 1050, 1060, 1070, 1080, 1100, 1110, 1120, 1130, 1140]
     assert numbers == [50, 60, 65, 80, 95, 100, 105] + charset_lines
+
+
+def test_magazine_line_codes():
+    """The two-letter codes printed beside the listing (TA 2/92 p.18, read from the scan at 600 dpi)
+    match the LST for the charset lines and their neighbours; algorithm from tools/line_codes.py."""
+    sys.path.insert(0, str(ROOT / 'tools'))
+    from line_codes import listing_codes
+    codes = {no: code for no, code, _ in listing_codes((ROOT / 'FAC.LST').read_bytes())}
+    printed = {1010: 'TU', 1020: 'KX', 1030: 'HE', 1040: 'RY', 1050: 'LV', 1060: 'TV', 1070: 'AY', 1080: 'JU',
+               1090: 'IX', 1100: 'JH', 1110: 'SK', 1120: 'RN', 1130: 'BO', 1140: 'KH', 1150: 'IN',
+               2000: 'TN', 2010: 'XH', 2020: 'BY', 2030: 'QL',
+               445: 'OY', 455: 'AD', 470: 'BG', 475: 'RQ', 480: 'UN', 495: 'FF', 500: 'HN', 550: 'ZL',
+               555: 'AP', 560: 'BF', 565: 'ZY', 2130: 'CD', 2140: 'AI', 2160: 'IR'}
+    assert {no: codes[no] for no in printed} == printed
