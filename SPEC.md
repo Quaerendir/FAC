@@ -181,30 +181,31 @@ stepped off from: 1 or 2 safe, 3 fatal.
   fatal (L615), an empty cell below makes the hero drop. The list is consumed
   in order for the whole level attempt and reset by any reload of the level.
 
-### 3.5 „Wszedłem w skarb i zginąłem” (uwaga po polsku)
+### 3.5 "I walked into a treasure and died"
 
-Nie w skarb, tylko w to, co jest za nim. W oryginale wejście w **dowolną**
-niepustą komórkę jest śmiertelne: w marszu (L615, `IF K>0 THEN 650`) i w
-powietrzu (L595). Ściana nie zatrzymuje bohatera, tylko go zabija. Skarb
-jest jedynym wyjątkiem, bo podprogram punktów (L360..L385) zostawia po sobie
-`K=0` (pętla `K=120 … K=K-40` trzy razy). W poziomie 1 skarby leżą tuż przy
-pniu ze ścian:
+Not into the treasure: into what is behind it. Entering **any** non-empty
+cell is fatal in the original, on foot (L615, `IF K>0 THEN 650`) and in the
+air (L595); a wall does not stop the hero, it kills it. A treasure is the one
+exception, because the points routine (L360..L385) leaves `K=0` behind (the
+loop `K=120 … K=K-40` three times). In level 1 the treasures sit right next
+to the trunk of walls:
 
 ```
-*       )/%        +      wiersz 10
-   … (11,10) -> (10,10): skarb zebrany
-                 (9,10): ściana '/' -> śmierć
+*       )/%        +      row 10
+   … (11,10) -> (10,10): treasure collected
+                 (9,10): wall '/' -> death
 ```
 
-więc po skarbie trzeba się zatrzymać albo zawrócić. Wrażenie „za szybko”
-bierze się z autopowtarzania klawisza: system XL/XE powtarza przytrzymany
-klawisz co 6 ramek (ok. 120 ms) po zwłoce 48 ramek (ok. 1 s), a gra czyta
-rejestr 764 w każdym przebiegu pętli (L270) i zeruje go (L295), więc
-przytrzymany kierunek prowadzi bohatera prosto w ścianę. Do tego bufor:
-klawisz naciśnięty w locie zostaje w 764 i jest wykonany po wylądowaniu.
-Front end odtwarza obie rzeczy (`pygame.key.set_repeat(960, 120)`, klawisz
-oczekujący do chwili odczytu w L270). Artykuł mówi to wprost: „Stawiaj kroki
-rozważnie”, a wariant z limitem kroków liczy każdy z nich (111 na poziom 1).
+so after a treasure the hero has to stop or turn. It feels "too fast"
+because of the key auto-repeat: the XL/XE OS repeats a held key every 6
+frames (about 120 ms) after a delay of 48 frames (about 1 s), and the game
+reads register 764 on every pass of its loop (L270) and clears it (L295), so
+a held direction marches the hero straight into the wall. Add the buffer: a
+key pressed in the air stays in 764 and is acted on after landing. The front
+end reproduces both (`pygame.key.set_repeat(960, 120)`, the pending key kept
+until L270 reads it). The article says it outright: *stawiaj kroki
+rozważnie* ("place your steps carefully"), and the step-limited variant
+counts every one of them (111 for level 1).
 
 ---
 
