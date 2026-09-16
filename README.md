@@ -88,6 +88,31 @@ e = Engine(parse_levels(open('levels.txt').read()), Variant.TIME_STEPS)
 events = e.tick(Key.LEFT)     # one pass of the main loop; e.screen, e.state
 ```
 
+## "I walked into a treasure and died"
+
+You did not: you walked into what is behind it. Entering **any** non-empty
+cell is fatal in the original, on foot (line 615, `IF K>0 THEN 650`) and in
+the air (line 595); walls do not stop the hero, they kill it. A treasure is
+the one exception, because the points routine (lines 360–385) leaves `K=0`
+after collecting it. In level 1 the treasures sit right next to the trunk of
+walls:
+
+```
+*       )/%        +      row 10
+   ... (11,10) -> (10,10): treasure collected
+                  (9,10): wall '/' -> death
+```
+
+so after a treasure you have to stop or turn. It feels "too fast" because
+of the key auto-repeat: the XL/XE OS repeats a held key every 120 ms after
+a delay of about a second, the game reads it on every pass of its loop, so
+a held direction marches the hero straight into the wall. The front end
+reproduces that (`pygame.key.set_repeat(960, 120)`), and also the key
+buffer: a key pressed in the air is remembered (like register 764) and
+acted on when the hero lands. The article says it: *stawiaj kroki
+rozważnie*, and the step-limited variant counts every one of them (111 for
+level 1).
+
 ## What the reconstruction reproduces
 
 - The screen memory as the game state: the terrain test PEEKs the screen, the
