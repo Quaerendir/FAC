@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fac-atari"
+version = "0.1.0"
+description = "FAC (Atari 8-bit, J.B. Wisniewski 1992): the Tajemnice ATARI type-in platformer reconstructed from its BASIC listing as a deterministic Python engine with a pygame front end"
+readme = "README.md"
+requires-python = ">=3.11"
+authors = [{ name = "Quaerendir" }]
+license = "MIT"
+license-files = ["LICENSE", "NOTICE"]
+keywords = ["atari", "atari-8-bit", "atari-basic", "fac", "tajemnice-atari", "retro", "pygame", "pokey", "game-preservation"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: Developers",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Games/Entertainment :: Side-Scrolling/Arcade Games",
+    "Topic :: System :: Emulators",
+    "Typing :: Typed",
+]
+dependencies = ["pygame-ce>=2.5"]
+
+[project.optional-dependencies]
+test = ["pytest", "hypothesis", "mypy"]
+
+[project.urls]
+Homepage = "https://github.com/Quaerendir/FAC"
+Source = "https://github.com/Quaerendir/FAC"
+Issues = "https://github.com/Quaerendir/FAC/issues"
+
+[project.scripts]
+fac = "fac.play:main"
+
+[tool.setuptools]
+packages = ["fac"]
+
+[tool.setuptools.package-data]
+fac = ["data/*", "py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.mypy]
+strict = true
