@@ -181,6 +181,31 @@ stepped off from: 1 or 2 safe, 3 fatal.
   fatal (L615), an empty cell below makes the hero drop. The list is consumed
   in order for the whole level attempt and reset by any reload of the level.
 
+### 3.5 „Wszedłem w skarb i zginąłem” (uwaga po polsku)
+
+Nie w skarb, tylko w to, co jest za nim. W oryginale wejście w **dowolną**
+niepustą komórkę jest śmiertelne: w marszu (L615, `IF K>0 THEN 650`) i w
+powietrzu (L595). Ściana nie zatrzymuje bohatera, tylko go zabija. Skarb
+jest jedynym wyjątkiem, bo podprogram punktów (L360..L385) zostawia po sobie
+`K=0` (pętla `K=120 … K=K-40` trzy razy). W poziomie 1 skarby leżą tuż przy
+pniu ze ścian:
+
+```
+*       )/%        +      wiersz 10
+   … (11,10) -> (10,10): skarb zebrany
+                 (9,10): ściana '/' -> śmierć
+```
+
+więc po skarbie trzeba się zatrzymać albo zawrócić. Wrażenie „za szybko”
+bierze się z autopowtarzania klawisza: system XL/XE powtarza przytrzymany
+klawisz co 6 ramek (ok. 120 ms) po zwłoce 48 ramek (ok. 1 s), a gra czyta
+rejestr 764 w każdym przebiegu pętli (L270) i zeruje go (L295), więc
+przytrzymany kierunek prowadzi bohatera prosto w ścianę. Do tego bufor:
+klawisz naciśnięty w locie zostaje w 764 i jest wykonany po wylądowaniu.
+Front end odtwarza obie rzeczy (`pygame.key.set_repeat(960, 120)`, klawisz
+oczekujący do chwili odczytu w L270). Artykuł mówi to wprost: „Stawiaj kroki
+rozważnie”, a wariant z limitem kroków liczy każdy z nich (111 na poziom 1).
+
 ---
 
 ## 4. Treasures and the counters
