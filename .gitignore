@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.*.swp
+.*.swo
+.pytest_cache/
+.hypothesis/
+.mypy_cache/
+dist/
+build/
+*.egg-info/

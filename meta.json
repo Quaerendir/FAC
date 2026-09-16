@@ -1,0 +1,308 @@
+{
+  "source": {
+    "listing": "FAC.LST",
+    "article": "2_92_fac.html",
+    "archive": "http://tajemnice.atari8.info/2_92/2_92_listingi.zip -> 2_92.atr -> FAC.LST"
+  },
+  "screen": {
+    "graphics": 18,
+    "cols": 20,
+    "rows": 12
+  },
+  "charset": {
+    "addr": "$9800",
+    "chbas": 152,
+    "size": 208,
+    "glyphs": 26,
+    "file": "charset.bin",
+    "hero_glyphs": [
+      12,
+      13,
+      14
+    ],
+    "digit_glyphs": [
+      16,
+      25
+    ]
+  },
+  "keys": {
+    "left": {
+      "code": 6,
+      "key": "+"
+    },
+    "right": {
+      "code": 7,
+      "key": "*"
+    },
+    "jump": {
+      "code": 33,
+      "key": " "
+    }
+  },
+  "tune_425": [
+    96,
+    91,
+    81,
+    91,
+    96,
+    108,
+    121,
+    128,
+    121,
+    0,
+    96,
+    81,
+    60,
+    0,
+    0,
+    0,
+    64,
+    60,
+    53,
+    60,
+    72,
+    60,
+    81,
+    60,
+    81,
+    0,
+    91,
+    96,
+    91,
+    0,
+    96,
+    108,
+    121,
+    0,
+    0,
+    0
+  ],
+  "levels": [
+    {
+      "index": 1,
+      "line": 2000,
+      "colors_708_712": [
+        138,
+        205,
+        88,
+        0,
+        18
+      ],
+      "x": 15,
+      "y": 10,
+      "treasures": 9,
+      "time": 17,
+      "steps": 111,
+      "next_line": 2200,
+      "elevators": []
+    },
+    {
+      "index": 2,
+      "line": 2200,
+      "colors_708_712": [
+        138,
+        205,
+        88,
+        0,
+        18
+      ],
+      "x": 18,
+      "y": 10,
+      "treasures": 5,
+      "time": 11,
+      "steps": 43,
+      "next_line": 2400,
+      "elevators": []
+    },
+    {
+      "index": 3,
+      "line": 2400,
+      "colors_708_712": [
+        138,
+        205,
+        88,
+        0,
+        18
+      ],
+      "x": 5,
+      "y": 10,
+      "treasures": 3,
+      "time": 18,
+      "steps": 94,
+      "next_line": 2600,
+      "elevators": []
+    },
+    {
+      "index": 4,
+      "line": 2600,
+      "colors_708_712": [
+        138,
+        205,
+        88,
+        0,
+        18
+      ],
+      "x": 3,
+      "y": 1,
+      "treasures": 6,
+      "time": 20,
+      "steps": 86,
+      "next_line": 2800,
+      "elevators": [
+        13,
+        35,
+        27,
+        139,
+        139,
+        139,
+        181,
+        13
+      ]
+    },
+    {
+      "index": 5,
+      "line": 2800,
+      "colors_708_712": [
+        138,
+        205,
+        88,
+        0,
+        18
+      ],
+      "x": 6,
+      "y": 10,
+      "treasures": 10,
+      "time": 24,
+      "steps": 118,
+      "next_line": 3000,
+      "elevators": [
+        37
+      ]
+    },
+    {
+      "index": 6,
+      "line": 3000,
+      "colors_708_712": [
+        138,
+        205,
+        88,
+        0,
+        18
+      ],
+      "x": 10,
+      "y": 10,
+      "treasures": 12,
+      "time": 24,
+      "steps": 114,
+      "next_line": 3200,
+      "elevators": [
+        55,
+        137
+      ]
+    },
+    {
+      "index": 7,
+      "line": 3200,
+      "colors_708_712": [
+        138,
+        205,
+        88,
+        0,
+        18
+      ],
+      "x": 18,
+      "y": 1,
+      "treasures": 5,
+      "time": 30,
+      "steps": 101,
+      "next_line": 3400,
+      "elevators": [
+        142,
+        54,
+        146,
+        180
+      ]
+    },
+    {
+      "index": 8,
+      "line": 3400,
+      "colors_708_712": [
+        138,
+        205,
+        88,
+        0,
+        18
+      ],
+      "x": 11,
+      "y": 1,
+      "treasures": 4,
+      "time": 15,
+      "steps": 23,
+      "next_line": 3600,
+      "elevators": [
+        105,
+        150
+      ]
+    },
+    {
+      "index": 9,
+      "line": 3600,
+      "colors_708_712": [
+        138,
+        205,
+        88,
+        0,
+        18
+      ],
+      "x": 10,
+      "y": 1,
+      "treasures": 2,
+      "time": 105,
+      "steps": 80,
+      "next_line": 3800,
+      "elevators": []
+    },
+    {
+      "index": 10,
+      "line": 3800,
+      "colors_708_712": [
+        138,
+        205,
+        88,
+        0,
+        18
+      ],
+      "x": 12,
+      "y": 10,
+      "treasures": 3,
+      "time": 28,
+      "steps": 23,
+      "next_line": 4000,
+      "elevators": [
+        101,
+        91
+      ]
+    },
+    {
+      "index": 11,
+      "line": 4000,
+      "colors_708_712": [
+        138,
+        205,
+        88,
+        0,
+        18
+      ],
+      "x": 10,
+      "y": 10,
+      "treasures": 5,
+      "time": 16,
+      "steps": 75,
+      "next_line": 0,
+      "elevators": [
+        160,
+        160
+      ]
+    }
+  ]
+}
